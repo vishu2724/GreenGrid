@@ -22,32 +22,20 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 p-6">
       
-      {/* Top bar */}
-      <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-green-700">
-          Green Grid
-        </h1>
-
-        <a
-          href="/add"
-          className="bg-green-600 text-white px-4 py-2 rounded-lg"
-        >
-          + Add Equipment
-        </a>
-      </div>
+   
 
       {/* Search + Filter */}
       <div className="flex gap-4 mb-6">
         <input
           type="text"
           placeholder="Search equipment..."
-          className="border p-2 rounded w-full"
+          className="border bg-black p-2 rounded w-full"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
 
         <select
-          className="border p-2 rounded"
+          className="border bg-black p-2 rounded"
           value={status}
           onChange={(e) => setStatus(e.target.value)}
         >

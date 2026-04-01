@@ -29,6 +29,17 @@ export default function EquipmentCard({ item }) {
     setUsedBy(data.usedBy);
   }
 
+  async function handleDelete() {
+    const confirmDelete = confirm("Are you sure?");
+    if (!confirmDelete) return;
+  
+    await fetch(`/api/equipment/${item._id}`, {
+      method: "DELETE",
+    });
+  
+    window.location.reload(); // simple refresh
+  }
+
   return (
     <div className="bg-white p-5 rounded-xl shadow">
         {item.image && (
@@ -72,6 +83,13 @@ export default function EquipmentCard({ item }) {
 >
   Edit
 </a>
+
+<button
+  onClick={handleDelete}
+  className="mt-2 bg-red-600 text-white px-3 py-2 rounded"
+>
+  Delete
+</button>
     </div>
   );
 }

@@ -41,3 +41,21 @@ export async function PATCH(req, context) {
       );
     }
   }
+
+  //delete item
+  export async function DELETE(req, context) {
+    try {
+      await connectDB();
+  
+      const { id } = await context.params;
+  
+      await Equipment.findByIdAndDelete(id);
+  
+      return Response.json({ message: "Deleted successfully" });
+    } catch (error) {
+      return Response.json(
+        { error: "Failed to delete" },
+        { status: 500 }
+      );
+    }
+  }
