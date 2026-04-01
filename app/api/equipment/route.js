@@ -1,5 +1,5 @@
 import connectDB from "../../../lib/mongodb";
-import Equipment from "@/models/Equipment";
+import Equipment from "../../../models/Equipment";
 
 // GET → saare equipments fetch karega
 export async function GET() {
