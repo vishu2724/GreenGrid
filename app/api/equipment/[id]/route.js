@@ -3,27 +3,41 @@ import Equipment from "../../../../models/Equipment";
 
 // GET single item
 export async function GET(req, context) {
-    await connectDB();
+    try {
+      await connectDB();
   
-    const { id } = await context.params;
+      const { id } = await context.params;
   
-    const item = await Equipment.findById(id);
+      const item = await Equipment.findById(id);
   
-    return Response.json(item);
+      return Response.json(item);
+    } catch (error) {
+      return Response.json(
+        { error: "Failed to fetch equipment" },
+        { status: 500 }
+      );
+    }
   }
 
 // PATCH update
 export async function PATCH(req, context) {
-    await connectDB();
-    const body = await req.json();
+    try {
+      await connectDB();
   
-    const { id } = await context.params;
+      const body = await req.json();
+      const { id } = await context.params;
   
-    const updated = await Equipment.findByIdAndUpdate(
-      id,
-      body,
-      { new: true }
-    );
+      const updated = await Equipment.findByIdAndUpdate(
+        id,
+        body,
+        { new: true }
+      );
   
-    return Response.json(updated);
+      return Response.json(updated);
+    } catch (error) {
+      return Response.json(
+        { error: "Failed to update equipment" },
+        { status: 500 }
+      );
+    }
   }

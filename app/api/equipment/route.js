@@ -3,33 +3,49 @@ import Equipment from "../../../models/Equipment";
 
 // GET → saare equipments fetch karega
 export async function GET(req) {
-    await connectDB();
+    try {
+      await connectDB();
   
-    const { searchParams } = new URL(req.url);
+      const { searchParams } = new URL(req.url);
   
-    const search = searchParams.get("search");
-    const status = searchParams.get("status");
+      const search = searchParams.get("search");
+      const status = searchParams.get("status");
   
-    let query = {};
+      let query = {};
   
-    if (search) {
-      query.name = { $regex: search, $options: "i" };
+      if (search) {
+        query.name = { $regex: search, $options: "i" };
+      }
+  
+      if (status) {
+        query.status = status;
+      }
+  
+      const data = await Equipment.find(query);
+  
+      return Response.json(data);
+    } catch (error) {
+      return Response.json(
+        { error: "Failed to fetch equipment" },
+        { status: 500 }
+      );
     }
-  
-    if (status) {
-      query.status = status;
-    }
-  
-    const data = await Equipment.find(query);
-  
-    return Response.json(data);
   }
 
 // POST → naya equipment add karega
 export async function POST(req) {
-  await connectDB();
-  const body = await req.json();
-
-  const item = await Equipment.create(body);
-  return Response.json(item);
-}
+    try {
+      await connectDB();
+  
+      const body = await req.json();
+  
+      const item = await Equipment.create(body);
+  
+      return Response.json(item);
+    } catch (error) {
+      return Response.json(
+        { error: "Failed to create equipment" },
+        { status: 500 }
+      );
+    }
+  }
