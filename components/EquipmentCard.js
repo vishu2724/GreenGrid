@@ -31,7 +31,15 @@ export default function EquipmentCard({ item }) {
 
   return (
     <div className="bg-white p-5 rounded-xl shadow">
+        {item.image && (
+  <img
+    src={item.image}
+    alt={item.name}
+  className="w-full h-40 object-contain bg-gray-100 rounded mb-3"
+  />
+)}
       <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
+      
 
       <p className="text-gray-600 mb-3">{item.description}</p>
 
@@ -57,6 +65,13 @@ export default function EquipmentCard({ item }) {
       >
         {status === "available" ? "Mark as In Use" : "Mark as Available"}
       </button>
+
+      <a
+  href={`/edit/${item._id}`}
+  className="block mt-2 text-blue-600"
+>
+  Edit
+</a>
     </div>
   );
 }
