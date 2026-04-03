@@ -1,36 +1,125 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🌱 Green Grid – Resource Exchange Platform
 
-## Getting Started
+Green Grid is a full-stack web application that allows users to manage and share equipment efficiently. Users can browse available resources, update their availability status, and manage equipment in a simple and intuitive interface.
 
-First, run the development server:
+---
+
+## 🚀 Features
+
+### 🔧 Equipment Management
+
+* Add new equipment with details and image
+* Edit existing equipment information
+* Delete equipment from the system
+
+### 📊 Availability Tracking
+
+* Mark equipment as **Available** or **In Use**
+* Track who is currently using the equipment
+
+### 🔍 Search & Filter
+
+* Search equipment by name
+* Filter by availability status
+
+### 🧠 Smart UI/UX
+
+* Clean and responsive design
+* Real-time updates with API integration
+* Global navigation bar for smooth routing
+
+---
+
+## 🛠️ Tech Stack
+
+### Frontend
+
+* Next.js (App Router)
+* React.js
+* Tailwind CSS
+
+### Backend
+
+* Next.js API Routes
+* MongoDB
+* Mongoose
+
+---
+
+## ⚙️ Installation & Setup
 
 ```bash
+# Clone the repository
+git clone https://github.com/your-username/green-grid.git
+
+# Navigate to project folder
+cd green-grid
+
+# Install dependencies
+npm install
+
+# Run development server
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## 🔑 Environment Variables
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the root directory and add:
 
-## Learn More
+```env
+MONGODB_URI=your_mongodb_connection_string
+```
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Folder Structure
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```
+/app
+  /api
+    /equipment
+      route.js
+      /[id]
+        route.js
+  /add
+  /edit/[id]
+/components
+/lib
+/models
+```
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📌 API Endpoints
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Method | Endpoint           | Description          |
+| ------ | ------------------ | -------------------- |
+| GET    | /api/equipment     | Get all equipment    |
+| POST   | /api/equipment     | Add new equipment    |
+| GET    | /api/equipment/:id | Get single equipment |
+| PATCH  | /api/equipment/:id | Update equipment     |
+| DELETE | /api/equipment/:id | Delete equipment     |
+
+---
+
+## 🎯 Key Highlights
+
+* Full CRUD functionality (Create, Read, Update, Delete)
+* Dynamic routing using Next.js App Router
+* Real-time UI updates with backend integration
+* Clean and scalable code structure
+
+---
+
+## 📹 Demo
+
+
+
+---
+
+## 🙌 Author
+
+**Vishant Bhardwaj**
+
