@@ -41,21 +41,30 @@ export default function EquipmentCard({ item }) {
   }
 
   return (
-    <div className="bg-white p-5 rounded-xl shadow">
-        {item.image && (
-  <img
-    src={item.image}
-    alt={item.name}
-  className="w-full h-40 object-contain bg-gray-100 rounded mb-3"
-  />
-)}
-      <h2 className="text-xl font-semibold mb-2">{item.name}</h2>
+    <div className="bg-white rounded-xl shadow p-4 hover:shadow-lg transition duration-300">
       
-
-      <p className="text-gray-600 mb-3">{item.description}</p>
-
+      {/* Image */}
+      <div className="w-full h-48 overflow-hidden rounded-lg mb-3">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-full object-cover hover:scale-105 transition duration-300"
+        />
+      </div>
+  
+      {/* Title */}
+      <h2 className="text-lg font-semibold text-gray-800">
+        {item.name}
+      </h2>
+  
+      {/* Description */}
+      <p className="text-gray-600 text-sm mb-3">
+        {item.description}
+      </p>
+  
+      {/* Status */}
       <span
-        className={`inline-block px-3 py-1 text-sm rounded-full ${
+        className={`inline-block px-3 py-1 text-sm rounded-full mb-2 ${
           status === "available"
             ? "bg-green-100 text-green-700"
             : "bg-red-100 text-red-700"
@@ -63,33 +72,39 @@ export default function EquipmentCard({ item }) {
       >
         {status === "available" ? "Available" : "In Use"}
       </span>
-
+  
+      {/* Used By */}
       {status === "in_use" && (
-        <p className="text-sm mt-2 text-gray-700">
+        <p className="text-xs text-gray-500 mb-2">
           In Use by: {usedBy}
         </p>
       )}
-
-      <button
-        onClick={handleToggle}
-        className="mt-4 bg-green-600 text-white px-3 py-2 rounded"
-      >
-        {status === "available" ? "Mark as In Use" : "Mark as Available"}
-      </button>
-
-      <a
-  href={`/edit/${item._id}`}
-  className="block mt-2 text-blue-600"
->
-  Edit
-</a>
-
-<button
-  onClick={handleDelete}
-  className="mt-2 bg-red-600 text-white px-3 py-2 rounded"
->
-  Delete
-</button>
+  
+      {/* Buttons */}
+      <div className="flex flex-wrap gap-2 mt-3">
+        
+        <button
+          onClick={handleToggle}
+          className="flex-1 bg-green-600 text-white py-2 rounded hover:bg-green-700 transition text-sm"
+        >
+          {status === "available" ? "Mark as In Use" : "Mark as Available"}
+        </button>
+  
+        <a
+          href={`/edit/${item._id}`}
+          className="px-3 py-2 text-sm border text-black border-gray-300 rounded hover:bg-gray-100"
+        >
+          Edit
+        </a>
+  
+        <button
+          onClick={handleDelete}
+          className="px-3 py-2 text-sm bg-red-600 text-white rounded hover:bg-red-700"
+        >
+          Delete
+        </button>
+  
+      </div>
     </div>
   );
 }
