@@ -11,14 +11,19 @@ export default function AddEquipment() {
   const [image, setImage] = useState("");
 
   async function handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault();// form submit hone par page reload nahi hoga
 
     const res = await fetch("/api/equipment", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json",
+        "Content-Type": "application/json", //server ko batata hai ki data json format me hai
       },
-      body: JSON.stringify({ name, description, image }),
+      body: JSON.stringify({ name, description, image }),// form data ko json string me convert karta hai
+      // {
+      //   name: "Camera",
+      //   description: "Canon",
+      //   image: "url"
+      // }
     });
 
     if (res.ok) {

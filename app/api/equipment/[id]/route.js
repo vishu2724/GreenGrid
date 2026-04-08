@@ -6,7 +6,7 @@ export async function GET(req, context) {
     try {
       await connectDB();
   
-      const { id } = await context.params;
+      const { id } = await context.params;//dynamic route ka data deta hai
   
       const item = await Equipment.findById(id);
   
@@ -24,13 +24,13 @@ export async function PATCH(req, context) {
     try {
       await connectDB();
   
-      const body = await req.json();
+      const body = await req.json();//Client se aaya data read karta hai
       const { id } = await context.params;
   
       const updated = await Equipment.findByIdAndUpdate(
         id,
         body,
-        { new: true }
+        { new: true } //updated data return karo
       );
   
       return Response.json(updated);

@@ -28,3 +28,4 @@ const EquipmentSchema = new mongoose.Schema(
 
 export default mongoose.models.Equipment ||
   mongoose.model("Equipment", EquipmentSchema);
+  // Agar Equipment model already bana hua hai to usse use karo, warna naya bana do

@@ -6,15 +6,16 @@ export async function GET(req) {
     try {
       await connectDB();
   
-      const { searchParams } = new URL(req.url);
+      const { searchParams } = new URL(req.url);// url parse(url ko todta h)
   
-      const search = searchParams.get("search");
-      const status = searchParams.get("status");
+      const search = searchParams.get("search");//search info fetch karega
+      const status = searchParams.get("status");//status info fetch karega
   
-      let query = {};
+      let query = {}; //query object banaya jo filter karega
   
       if (search) {
-        query.name = { $regex: search, $options: "i" };
+        query.name = { $regex: search,// pattern searching ke liye regex use karte hai
+           $options: "i" };//case insensitive
       }
   
       if (status) {

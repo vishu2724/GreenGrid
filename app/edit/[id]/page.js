@@ -13,9 +13,9 @@ export default function EditPage({ params }) {
   const [image, setImage] = useState("");
 
   useEffect(() => {
-    async function getId() {
+    async function getId() { //
       const resolvedParams = await params;
-      setId(resolvedParams.id);
+      setId(resolvedParams.id);//dynamic route se id fetch karke state me set karta hai
     }
   
     getId();
@@ -25,9 +25,11 @@ export default function EditPage({ params }) {
     if (!id) return;
   
     async function fetchData() {
+      //GET request karke existing equipment data fetch karna
       const res = await fetch(`/api/equipment/${id}`);
       const data = await res.json();
   
+      // Form fields ko existing data se pre-fill karna
       setName(data.name || "");
       setDescription(data.description || "");
       setImage(data.image || "");
@@ -38,7 +40,7 @@ export default function EditPage({ params }) {
 
   async function handleSubmit(e) {
     e.preventDefault();
-
+    //PATCH request karke updated data server ko bhejna
     await fetch(`/api/equipment/${id}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
@@ -61,7 +63,7 @@ export default function EditPage({ params }) {
           
           {/* Name */}
           <input
-            value={name}
+            value={name} //Pre-filled values 
             onChange={(e) => setName(e.target.value)}
             placeholder="Equipment Name"
             className="w-full px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-500"
